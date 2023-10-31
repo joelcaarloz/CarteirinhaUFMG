@@ -2,7 +2,6 @@
 #define CATRACA_H_
 
 
-#include "cart_fumpista.h"
 #include "carteirinha.h"
 #include <iostream>
 
