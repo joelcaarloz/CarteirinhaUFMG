@@ -8,7 +8,6 @@ class Carteirinha{
     private:
     //usando long int, pois em sistemas de 32 bits int representa até 9 casas
     long int id; //ID da carteirinha
-    long int matricula; 
     long int cpf;
     long int identidade;
     std::string nome;
@@ -20,7 +19,7 @@ class Carteirinha{
         bool almoco;
         bool janta;
     };
-    Acessos acessos_ru;
+    //o número de matricula será a chave criado junto com Carteirinha
 
     public:
     //construtor
