@@ -20,6 +20,14 @@ Carteirinha::Carteirinha(string& id, string& cpf, string& identidade, string& no
    vinculoMop_ = vinculo_mop;
 }
 
+void Carteirinha::atualizar(int nivel, int mop, bool vinculo)
+{
+    nivel_ = nivel;
+    mop_= mop;
+    vinculoMop_ = vinculo;
+    return;
+}
+
 string Carteirinha::getID() const {
     return id_;
 }

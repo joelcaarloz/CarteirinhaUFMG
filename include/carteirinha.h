@@ -1,14 +1,23 @@
 #ifndef CARTEIRINHA_H_
 #define CARTEIRINHA_H_
 
-
-#include "sistema_carteirinha.h"
 #include <string>
+#include <map>
+
 
 using namespace std;
 //MOP = Moradias Ouro Preto
 //tipo para tratamento de excessões na recarga do saldo
 struct exceptionRecarga{
+};
+struct cartExistente {
+    string matricula;
+};
+struct cartInexistente {
+    string matricula;
+};
+struct erroCadastro {
+    string matricula;
 };
 
 
@@ -35,6 +44,9 @@ class Carteirinha{
 
     //construtor, inicializa todos os dados da carteirinha
     Carteirinha(string& id, string& cpf, string& identidade, string& nome, string& curso, int nivel, int mop, bool vinculo_mop);
+
+    //atualiza situação socioeconomica do aluno
+    void atualizar(int nivel, int mop, bool vinculo);
 
     //retorna a id da carteirinha
     string getID() const;
@@ -69,6 +81,37 @@ class Carteirinha{
 
     //destrutor
     ~Carteirinha();
+
+};
+
+class SistemaCarteirinha {
+private:
+    map<string, Carteirinha> alunos; // Cada carteirinha é associada a matrícula, que é única
+
+public:
+    // Construtor, inicializa o sistema vazio
+    SistemaCarteirinha();
+
+    // Inicializa uma nova carteirinha
+    // Pré-condição: a carteirinha não deve existir
+    void newCarteirinha(string matricula);
+
+    // Atualiza situação socioeconomica do aluno, pois só esses dados são mutáveis
+    // Pré-condição: a carteirinha deve existir
+    void atualizaCarteirinha(string matricula);
+
+    // Busca por uma carteirinha específica
+    // Pré-condição: a carteirinha deve existir
+    Carteirinha* buscaCarteirinha(string matricula);
+
+    // Apaga carteirinha de um aluno
+    // Pré-condição: a carteirinha deve existir
+    void deleteCadastro(string matricula);
+
+    // Destrutor de todas as carteirinhas
+    ~SistemaCarteirinha();
+
+    // Outras funções conforme necessário...
 
 };
 
