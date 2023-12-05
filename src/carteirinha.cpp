@@ -1,51 +1,69 @@
 #include "../include/carteirinha.h"
+#include <string>
 
-Carteirinha:Carteirinha(){
+using namespace std;
+
+Carteirinha::Carteirinha(){
     
 }
 
-Carteirinha:Carteirinha(long int matricula){
-
-
+Carteirinha::Carteirinha(string& id, string& cpf, string& identidade, string& nome, string& curso, int nivel, int mop, bool vinculo_mop){
+   id_ = id;
+   cpf_ = cpf;
+   identidade_ =  identidade;
+   nome_ = nome;
+   curso_ = curso;
+   saldo_ = 0.00;
+   valida_ = true;
+   nivel_ = nivel;
+   mop_ = mop;
+   vinculoMop_ = vinculo_mop;
 }
 
-void Carteirinha:atualizaCarteirinha(){
-
+string Carteirinha::getID() const {
+    return id_;
 }
 
-bool Carteirinha:validadeCarteirinha(bool validar){
-
+string Carteirinha::getCPF() const {
+    return cpf_; 
 }
 
-void Carteirinha:imprimirDados(){
-
+string Carteirinha::getIDENTIDADE() const { 
+    return identidade_;
 }
 
-void Carteirinha:setSaldo(float add){
-
+string Carteirinha::getNOME() const {
+    return nome_;
 }
 
-void Carteirinha:tornarFumpista(const Cart_Fumpista& atualizar, Carteirinha& apagar){
-
+string Carteirinha::getCURSO() const { 
+    return curso_; 
 }
 
-void Carteirinha:imprimirSaldo(){
-
+float Carteirinha::getSALDO() const { 
+    return saldo_; 
 }
 
-void Carteirinha:bloquearCarteirinha(){
+void Carteirinha::setSALDO(float recarga){
+    if(recarga < 0)
+    {
+        exceptionRecarga e;
+        throw e;
+    }
+    saldo_ += recarga;
+    return;
 
 }
-
-void Carteirinha:deletarCarteirinha(){
-
+bool Carteirinha::getValidade() const { 
+    return valida_; 
+}
+int Carteirinha::getNIVEL() const{ 
+    return nivel_; 
 }
 
-Carteirinha Carteirinha::getCarteirinha(long int procura){
-
+bool Carteirinha::getMOP() const { 
+    return vinculoMop_; 
 }
 
-Carteirinha:~Carteirinha(){
-
-}
+Carteirinha::~Carteirinha(){};
 

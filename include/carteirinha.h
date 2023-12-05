@@ -1,62 +1,75 @@
 #ifndef CARTEIRINHA_H_
 #define CARTEIRINHA_H_
 
+
+#include "sistema_carteirinha.h"
 #include <string>
-#include "Cart_Fumpista.h"
+
+using namespace std;
+//MOP = Moradias Ouro Preto
+//tipo para tratamento de excessões na recarga do saldo
+struct exceptionRecarga{
+};
+
 
 class Carteirinha{
     private:
     //usando long int, pois em sistemas de 32 bits int representa até 9 casas
-    long int id; //ID da carteirinha
-    long int cpf;
-    long int identidade;
-    std::string nome;
-    std::string curso;
-    float saldo; //saldo na carteirinha
-    bool valida; //indica se a carteirinha está válida
-    struct Acessos{
-        bool cafe;
-        bool almoco;
-        bool janta;
-    };
-    //o número de matricula será a chave criado junto com Carteirinha
+    //dados pessoais do aluno
+    string id_; //ID da carteirinha
+    string cpf_;
+    string identidade_;
+    string nome_;
+    string curso_;
+    float saldo_; //saldo na carteirinha
+    bool valida_; //indica se a carteirinha está válida
+    //dados adicionais se o aluno for fumpista
+    int nivel_; //representa o nivel socioeconomico do aluno assistido
+    int mop_; // representa a mop em que ele mora, se não morador mop = 0
+    bool vinculoMop_;// se mopeano(morador), representa se o vinculo com a mop está ativo ou não
 
     public:
-    //construtor
+
+    //construtor, inicializa a carteirinha vazia
     Carteirinha();
 
-    //construtor
-    Carteirinha(long int matricula);
+    //construtor, inicializa todos os dados da carteirinha
+    Carteirinha(string& id, string& cpf, string& identidade, string& nome, string& curso, int nivel, int mop, bool vinculo_mop);
 
-    //atualiza algum dado da carteirinha
-    void atualizaCarteirinha();
+    //retorna a id da carteirinha
+    string getID() const;
 
-    //verifica validade da carteirinha
-    bool validadeCarteirinha(bool validar);
+    //retorna o cpf vinculado a carteirinha
+    string getCPF() const;
 
-    //imprimi os dados de carteirinha 
-    void imprimirDados();
+    //retorna a identidade vinculada a carteirinha 
+    string getIDENTIDADE() const;
 
-    //atualiza o valor de saldo
-    void setSaldo(float add);
+    //retorna o nome do aluno vinculado a carteirinha
+    string getNOME() const;
 
-    //cadastra o aluno como fumpista
-    void tornarFumpista(const Cart_Fumpista& atualizar, Carteirinha& apagar);
+    //retorna o curso do aluno vinculado a carteirinha
+    string getCURSO() const;
 
-    //imprimi o saldo disponivel
-    void imprimirSaldo();
+    //retorna o saldo presente na carteirinha
+    float getSALDO() const;
 
-    //bloqueia a carteirinha --> nesse metódo a carteirinha não pode mais ser desbloqueada e a id é apagada
-    void bloquearCarteirinha();
+    //recarrega o valor da carteirinha
+    //Pré-condição: o valor de recarga não pode ser negativo
+    void setSALDO(float recarga);
 
-    //exclui a carteirinha 
-    void deletarCarteirinha();
+    //retorna se a carteirinha é valida
+    bool getValidade() const;
 
-    //retorna os dados da carteirinha solicitada
-    Carteirinha getCarteirinha(long int procura);
+    //retorna nível socioeconomico do aluno
+    int getNIVEL() const;
+
+    //retorna situação com a mop
+    bool getMOP() const;
 
     //destrutor
     ~Carteirinha();
+
 };
 
 #endif
