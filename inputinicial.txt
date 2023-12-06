@@ -1,0 +1,120 @@
+2021014332
+n
+14578945612
+14789635
+Joel Carlos
+Engenharia de Controle e Automacao
+1
+3
+1
+2016045812
+n
+52147896301
+75432168
+Carlos Oliveira
+Engenharia Eletrica
+2
+1
+1
+2016139275
+n
+90761483205
+20874513
+Ana Santos
+Engenharia Mecanica
+3
+0
+0
+2023008146
+n
+64823107594
+93625417
+Fernanda Lima
+Engenharia de Computacao
+4
+0
+0
+2018012647
+n
+31256748902
+48176923
+Gabriel Almeida
+Engenharia Civil
+5
+0
+0
+2022189056
+n
+89504213678
+65213489
+Julia Costa
+Engenharia Quimica
+0
+0
+0
+2017123469
+n
+45619820753
+30789425
+Lucas Pereira
+Engenharia de Producao
+1
+1
+1
+2019037582
+n
+20359861487
+42986715
+Maria Araujo
+Engenharia Ambiental
+2
+2
+0
+2020196438
+n
+76932158406
+89417253
+Pedro Silva
+Engenharia Biomedica
+3
+2
+0
+2023102756
+n
+13498756280
+61532098
+Laura Souza
+Engenharia Aeroespacial
+0
+0
+0
+2022145678
+n
+67031589241
+76318542
+João Ferreira
+Engenharia de Telecomunicacoes
+0
+0
+0
+2016045812
+s
+78
+2016139275
+s
+178
+2023008146
+s
+82
+2018012647
+s
+89
+2022189056
+s
+79
+2022145678
+s
+500
+2023102756
+s
+826

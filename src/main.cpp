@@ -19,10 +19,8 @@ int main()
     {
         try
         {
-            cout << "Digite o número da matricula ou aproxime a carteirinha" << endl;
-            cin >> matricula;
-            cout << "Digite a operação que deseja realizar" << endl;
-            cin >> opera;
+            cin >> matricula;//Digite o número da matricula ou aproxime a carteirinha
+            cin >> opera;//Digite a operação que deseja realizar
             switch (opera)
             {
                 case 'n':
@@ -50,8 +48,7 @@ int main()
                     break;
 
                 case 's':
-                    cout << "Qual valor você deseja depositar? " << endl;
-                    cin >> dep;
+                    cin >> dep;//valor a ser depositado
                     users.deposito(matricula, dep);
                     dep = 0.0;
                     break;

@@ -18,26 +18,26 @@ void SistemaCarteirinha::newCarteirinha(string matricula){
         int nivel, mop;
         bool vinculoMop;
 
-        cout << "Informe o CPF: ";
+        //cout << "Informe o CPF: ";
         cin >> cpf;
 
-        cout << "Informe a identidade: ";
+        //cout << "Informe a identidade: ";
         cin >> identidade;
 
-        cout << "Informe o nome: ";
+        //cout << "Informe o nome: ";
         cin.ignore();//ignora o caractere de nova linha pendente
         getline(cin, nome);//para ler a linha inteira e não somente até ' '
 
-        cout << "Informe o curso: ";
+        //cout << "Informe o curso: ";
         getline(std::cin, curso);
 
-        cout << "Informe o nível socioeconômico: ";
+        //cout << "Informe o nível socioeconômico: ";
         cin >> nivel;
 
-        cout << "Informe de qual MOP(0 se não morador): ";
+        //cout << "Informe de qual MOP(0 se não morador): ";
         cin >> mop;
 
-        cout << "Se morador, como esta o vinculo(1 para ativo, 0 para desligado ou não morador): ";
+        //cout << "Se morador, como esta o vinculo(1 para ativo, 0 para desligado ou não morador): ";
         cin >> vinculoMop;
 
         if(cpf.size()!=11 ||identidade.size()!=8){//testa se ocorreu algum erro na inserção de dados
@@ -161,6 +161,16 @@ void SistemaCarteirinha::deposito(string ID, float dep)
         throw erro;
     }
     auto it = alunos.find(ID);
+    if(it==alunos.end())
+    {
+        cartInexistente e;
+        e.matricula = ID;
+        throw e;
+    }
+    if(it->second.getNIVEL() == 1)
+    {
+        cout << "Não é possível efetuar o depósito, pois o aluno tem acesso gratuito ao RU"<< endl;
+    }
     it->second.setSALDO(dep);
 
     return;
