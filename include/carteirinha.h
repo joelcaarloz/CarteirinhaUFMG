@@ -10,15 +10,6 @@ using namespace std;
 //tipo para tratamento de excessões na recarga do saldo
 struct exceptionRecarga{
 };
-struct cartExistente {
-    string matricula;
-};
-struct cartInexistente {
-    string matricula;
-};
-struct erroCadastro {
-    string matricula;
-};
 
 
 class Carteirinha{
@@ -67,8 +58,7 @@ class Carteirinha{
     float getSALDO() const;
 
     //recarrega o valor da carteirinha
-    //Pré-condição: o valor de recarga não pode ser negativo
-    void setSALDO(float recarga);
+    void setSALDO(float atualiza);
 
     //retorna se a carteirinha é valida
     bool getValidade() const;
@@ -81,37 +71,6 @@ class Carteirinha{
 
     //destrutor
     ~Carteirinha();
-
-};
-
-class SistemaCarteirinha {
-private:
-    map<string, Carteirinha> alunos; // Cada carteirinha é associada a matrícula, que é única
-
-public:
-    // Construtor, inicializa o sistema vazio
-    SistemaCarteirinha();
-
-    // Inicializa uma nova carteirinha
-    // Pré-condição: a carteirinha não deve existir
-    void newCarteirinha(string matricula);
-
-    // Atualiza situação socioeconomica do aluno, pois só esses dados são mutáveis
-    // Pré-condição: a carteirinha deve existir
-    void atualizaCarteirinha(string matricula);
-
-    // Busca por uma carteirinha específica
-    // Pré-condição: a carteirinha deve existir
-    Carteirinha* buscaCarteirinha(string matricula);
-
-    // Apaga carteirinha de um aluno
-    // Pré-condição: a carteirinha deve existir
-    void deleteCadastro(string matricula);
-
-    // Destrutor de todas as carteirinhas
-    ~SistemaCarteirinha();
-
-    // Outras funções conforme necessário...
 
 };
 

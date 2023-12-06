@@ -1,5 +1,7 @@
 #include "../include/carteirinha.h"
 #include <string>
+#include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -52,13 +54,13 @@ float Carteirinha::getSALDO() const {
     return saldo_; 
 }
 
-void Carteirinha::setSALDO(float recarga){
-    if(recarga < 0)
+void Carteirinha::setSALDO(float atualiza){
+    if(atualiza < 0 && abs(atualiza) > getSALDO() )
     {
         exceptionRecarga e;
         throw e;
     }
-    saldo_ += recarga;
+    this->saldo_ += atualiza;
     return;
 
 }

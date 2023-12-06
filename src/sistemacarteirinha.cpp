@@ -1,5 +1,5 @@
 
-#include "../include/carteirinha.h"
+#include "../include/sistemacarteirinha.h"
 #include <string>
 #include <iostream>
 
@@ -37,14 +37,14 @@ void SistemaCarteirinha::newCarteirinha(string matricula){
         cout << "Informe de qual MOP(0 se não morador): ";
         cin >> mop;
 
-        cout << "Se morador, como esta o vinculo(1 para ativo, 0 para desligado): ";
+        cout << "Se morador, como esta o vinculo(1 para ativo, 0 para desligado ou não morador): ";
         cin >> vinculoMop;
 
-        if(cpf.size()!=11 ||identidade.size()!=9){//testa se ocorreu algum erro na inserção de dados
+        if(cpf.size()!=11 ||identidade.size()!=8){//testa se ocorreu algum erro na inserção de dados
             erroCadastro erro;
             erro.matricula = matricula;
         }
-        id = cpf.substr(0,4) + matricula.substr(4,8); //gera o código da id da carteirinha
+        id = matricula; //id da carteirinha será igual a matricula
 
 
         Carteirinha novaCarteirinha(id, cpf, identidade, nome, curso, nivel, mop, vinculoMop);
@@ -87,11 +87,11 @@ void SistemaCarteirinha::atualizaCarteirinha(string matricula)
     return;
 }
 
-Carteirinha* SistemaCarteirinha::buscaCarteirinha(string matricula) {
+void SistemaCarteirinha::imprimeCarteirinha(string matricula) {
     auto it = alunos.find(matricula);
 
     if (it != alunos.end()) {
-        return &(it->second);
+        cout << "A carteirinha pertence há: "<< it->second.getNOME() << endl <<" E possui saldo de: " << it->second.getSALDO() << " reais." << endl;;
     } else {
         cartInexistente erro;
         erro.matricula = matricula;
@@ -99,7 +99,7 @@ Carteirinha* SistemaCarteirinha::buscaCarteirinha(string matricula) {
     }
 }
 
-void SistemaCarteirinha::deleteCadastro(string matricula) {
+void SistemaCarteirinha::deleteCarteirinha(string matricula) {
     auto it = alunos.find(matricula);
 
     if (it != alunos.end()) {
@@ -110,6 +110,60 @@ void SistemaCarteirinha::deleteCadastro(string matricula) {
         erro.matricula = matricula;
         throw erro;
     }
+}
+
+bool SistemaCarteirinha::catraca(string ID){
+    auto it = alunos.find(ID);
+    return it->second.getValidade();
+ }
+
+bool SistemaCarteirinha::catracaRU(string ID){
+    auto it = alunos.find(ID);
+    if(it->second.getValidade())
+    {
+        switch (it->second.getNIVEL())
+        {
+        case 1://alunos posicionados no nível 1 não pagam
+            break;
+
+        case 2://alunos nivel 2 pagam 1 real
+            it->second.setSALDO(-1.0);
+            break;
+
+        case 3://alunos nivel 3 pagam 1 real
+            it->second.setSALDO(-1.0);
+            break;
+
+        case 4://alunos nivel 4-A pagam 2
+            it->second.setSALDO(-2.0);
+            break;
+        
+        case 5://alunos nivel 4-B pagam 2,90
+            it->second.setSALDO(-2.90);
+            break;
+
+        default://alunos em geral
+            it->second.setSALDO(-5.60);
+            break;
+        }
+        return true;
+    }
+    return false;
+}
+
+void SistemaCarteirinha::deposito(string ID, float dep)
+{
+    if(dep < 0)
+    {
+        valorNeg erro;
+        erro.valor = dep;
+        erro.ID = ID;
+        throw erro;
+    }
+    auto it = alunos.find(ID);
+    it->second.setSALDO(dep);
+
+    return;
 }
 
 SistemaCarteirinha::~SistemaCarteirinha(){};
