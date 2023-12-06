@@ -1,5 +1,5 @@
 # CarteirinhaUFMG
->Status: ⚠️Em desenvolvimento⚠️
+>Status: Finalizado
 # Overview
 
  Com a volta da pandemia foi vista um crescente aumento nas filas dos restaurantes universitários, pode-se elencar os principais causadores:
@@ -16,4 +16,4 @@ Pensando nisso este projeto foi proposto.
 
 # Principios basicos de funcionamento
 
- Quando uma carteirinha é criada ela é ligada diretamente ao número de matricula. O programa será capaz de lidar com todos os processos envolvendo a carteirinha com uma nova funcionalidade, o sistema de recarga.Vale ressaltar que está impelementação é só para alunos de graduação.
+ Quando uma carteirinha é criada ela é ligada diretamente ao número de matricula. O programa será capaz de lidar com todos os processos envolvendo a carteirinha com uma nova funcionalidade, o sistema de recarga. Vale ressaltar que está impelementação é só para alunos de graduação.
